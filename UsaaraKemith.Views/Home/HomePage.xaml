@@ -1,0 +1,37 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:maptoolkit="clr-namespace:Microsoft.Phone.Maps.Toolkit;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wgview="clr-namespace:WG.Views.WinPRT.Controls;assembly=WG.Views.WinPRT"
+    x:Class="UsaaraKemith.Views.Home.HomePage"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid Background="{Binding PageBackground}">
+        
+    <ListBox
+        
+        x:Name="List"
+        ItemsSource="{Binding Tracks}">
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <wgview:WGButton Command="{Binding DataContext.AnalyzeCommand, ElementName=List}" CommandParameter="{Binding}">
+                    <TextBlock Text="{Binding Title}" TextWrapping="Wrap" FontSize="25"/>
+                </wgview:WGButton>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+        <TextBlock Text="{Binding Remaining}" FontSize="100" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Height="200">
+
+        </TextBlock>
+    </Grid>
+
+</phone:PhoneApplicationPage>
